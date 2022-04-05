@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require("mongoose");
 
+const userRoutes = require("./routes/user");
+app.use("/api/auth", userRoutes);
+
 // Mongoose
 
 mongoose.connect('mongodb+srv://ArcheoDev:Africaromana_89!@cluster0.sq37b.mongodb.net/piiquante?retryWrites=true&w=majority',
@@ -27,4 +30,4 @@ app.use((req, res, next) => {
     next();
   });
 
-module.exports = app;
+  module.exports = app;
