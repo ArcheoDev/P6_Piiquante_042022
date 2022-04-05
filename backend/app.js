@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const userRoutes = require("./routes/user");
-app.use("/api/auth", userRoutes);
 
 // Mongoose
 
@@ -15,10 +14,12 @@ mongoose.connect('mongodb+srv://ArcheoDev:Africaromana_89!@cluster0.sq37b.mongod
 //Express
 
 const app = express();
-app.use(express.json())
+app.use(express.json());
+
+//Correction erreur CORS
 
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", '*');
     res.setHeader(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
