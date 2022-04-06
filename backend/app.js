@@ -1,13 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
+const path = require('path')
 
 const userRoutes = require("./routes/user");
+app.use('/api/auth', userRoutes);
 
 // Mongoose
 
-mongoose.connect('mongodb+srv://ArcheoDev:Africaromana_89!@cluster0.sq37b.mongodb.net/piiquante?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.MONGOOSE_NAME}:${process.env.MONGOOSE_PW}@@cluster0.sq37b.mongodb.net/${process.env.MONGOOSE_PROJECT}?retryWrites=true&w=majority`
+  )
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
@@ -30,5 +34,9 @@ app.use((req, res, next) => {
     );
     next();
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
 
   module.exports = app;

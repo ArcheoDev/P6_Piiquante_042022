@@ -1,8 +1,9 @@
 const http = require("http");
 const app = require("./app");
+// const PORT = process.env.PORT || '3000';
 
 const normalizePort = val => {
-  const port = parseInt(val, 10);
+const port = parseInt(val, 10);
 
   if (isNaN(port)) {
     return val;
@@ -15,6 +16,10 @@ const normalizePort = val => {
 
 const port = normalizePort(process.env.PORT || '3000') 
 app.set("port", port);
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
 
 const errorHandler = error => {
   if (error.syscall !== "listen") {
