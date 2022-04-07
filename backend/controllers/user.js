@@ -4,6 +4,12 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
+// // in routes/user.js
+
+// const userCtrl = require('../controllers/user');
+
+// router.get('/', userCtrl.getAlluser);
+
 //Enregistrement d'un nouvel utilisateur
 
 exports.signup = (req, res) => {
@@ -38,7 +44,7 @@ exports.login = (req, res) => {
           }
           res.status(200).json({
             userId: user._id,
-            token: jwt.sign({ userId: user._id }, process.env.TOKEN_KEY, {
+            token: jwt.sign({ userId: user._id }, process.env.RANDOM_SECRET_KEY, {
               expiresIn: "24h",
             }),
           });
