@@ -1,23 +1,22 @@
-// const passWord = require("password-validator");
+const passWord = require("password-validator");
 
-// const passwordSchema = new passWord();
+const passwordSchema = new passWord();
 
-// passwordSchema
-//   .is()
-//   .min(5)
-//   .is()
-//   .max(15)
-//   .has()
-//   .uppercase(1)
-//   .has()
-//   .lowercase(1)
-//   .has()
-//   .digits(1)
-//   .has()
-//   .not()
-//   .spaces()
-//   .is()
-//   .not()
-//   .oneOf(["Passw0rd", "Password123"]);
+passwordSchema
+  .is()
+  .min(10)
+  .is()
+  .max(20)
+  .has()
+  .uppercase(1)
+  .has()
+  .lowercase(1)
+  .has()
+  .digits(1)
+  .has()
+  .not()
+  .spaces()
+  .is()
+  .not()
 
-// module.exports = passwordSchema;
+module.exports = passwordSchema;

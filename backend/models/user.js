@@ -8,6 +8,10 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
 });
 
+//Gérer les bug lors de l'utilisation d'un E-mail
+
 userSchema.plugin(uniqueValidator);
+
+//Exportation du model User
 
 module.exports = mongoose.model("User", userSchema);

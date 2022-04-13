@@ -1,3 +1,5 @@
+// Importation
+
 require("dotenv").config();
 
 const bcrypt = require("bcrypt");
@@ -6,7 +8,7 @@ const jwt = require("jsonwebtoken");
 
 //Enregistrement d'un nouvel utilisateur
 
-exports.signup = (req, res) => {
+exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -24,7 +26,7 @@ exports.signup = (req, res) => {
 
 // Connexion d'un utilisateur existant
 
-exports.login = (req, res) => {
+exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
